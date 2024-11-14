@@ -167,7 +167,7 @@ const Home = () => {
       <HeroSection>
         <ProfileSection>
         <ProfileName>Hi! I am Krisha Kothari</ProfileName>
-          <ProfileImage src="/profile.jpg" alt="Profile" />
+          <ProfileImage src="/profile.webp" alt="Profile" />
           
         </ProfileSection>
         

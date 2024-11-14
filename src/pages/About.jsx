@@ -4,7 +4,7 @@ import { FaGraduationCap } from 'react-icons/fa';
 
 const AboutContainer = styled.div`
   min-height: 100vh;
-  padding: 80px 1rem 2rem;
+  padding: 100px 1rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
   

@@ -37,12 +37,17 @@ const LogoContainer = styled(Link)`
 `;
 
 const Logo = styled.img`
-  width: 162px;
-  height: 60.6px;
+  width: 120px;
+  height: 45px;
   transition: transform ${props => props.theme.transitions.standard};
   
   &:hover {
     transform: rotate(-5deg);
+  }
+  
+  @media (min-width: ${props => props.theme.breakpoints.tablet}) {
+    width: 162px;
+    height: 60.6px;
   }
 `;
 
@@ -80,7 +85,7 @@ const NavLink = styled(Link)`
 `;
 
 const LatestShotsButton = styled(motion.button)`
-  display: none;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.6rem 1.2rem;
@@ -89,10 +94,7 @@ const LatestShotsButton = styled(motion.button)`
   border-radius: 100px;
   font-weight: 500;
   font-size: 0.9rem;
-  
-  @media (min-width: ${props => props.theme.breakpoints.tablet}) {
-    display: flex;
-  }
+  margin-top: 2rem;
 `;
 
 const MobileMenuButton = styled.button`
@@ -112,13 +114,68 @@ const MobileMenu = styled(motion.div)`
   left: 0;
   right: 0;
   bottom: 0;
-  background: ${props => props.theme.colors.secondary};
-  padding: 2rem;
+  background: white;
+  padding: 5rem 2rem 2rem;
   display: flex;
   flex-direction: column;
+  z-index: 999;
+
+  ${NavLink} {
+    font-size: 1.2rem;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid ${props => props.theme.colors.gray.light};
+  }
+`;
+
+const CloseButton = styled.button`
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1000;
+  font-size: 1.8rem;
+  color: ${props => props.theme.colors.text.primary};
+`;
+
+const MobileDownloadButton = styled(motion.a)`
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  padding: 1rem 2rem;
+  background: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.secondary};
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  margin-top: auto;
+  margin-bottom: 2rem;
+`;
+
+const DownloadButton = styled(motion.a)`
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.secondary};
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  
+  @media (min-width: ${props => props.theme.breakpoints.tablet}) {
+    display: flex;
+  }
+  
+  &:hover {
+    color: ${props => props.theme.colors.secondary};
+  }
 `;
 
 const Header = () => {
@@ -202,7 +259,16 @@ const Header = () => {
           </NavLink>
         </NavLinks>
 
-        
+        <DownloadButton
+          href="/krishakothari.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Download CV
+        </DownloadButton>
+
         <MobileMenuButton onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <HiX /> : <HiMenu />}
         </MobileMenuButton>
@@ -216,11 +282,26 @@ const Header = () => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
           >
+            <CloseButton onClick={() => setIsOpen(false)}>
+              <HiX />
+            </CloseButton>
+            
             <NavLink to="/" onClick={() => setIsOpen(false)}>Home</NavLink>
             <NavLink to="/about" onClick={() => setIsOpen(false)}>About</NavLink>
             <NavLink to="/experience" onClick={() => setIsOpen(false)}>Experience</NavLink>
             <NavLink to="/services" onClick={() => setIsOpen(false)}>Services</NavLink>
             <NavLink to="/contact" onClick={() => setIsOpen(false)}>Contact</NavLink>
+            
+            <MobileDownloadButton
+              href="/krishakotari.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsOpen(false)}
+            >
+              Download CV
+            </MobileDownloadButton>
           </MobileMenu>
         )}
       </AnimatePresence>
