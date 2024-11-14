@@ -1,0 +1,29 @@
+src/
+├── components/
+│   ├── layout/
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   └── Layout.jsx
+│   ├── home/
+│   │   ├── Hero.jsx
+│   │   └── ClientLogos.jsx
+│   ├── about/
+│   │   └── Journey.jsx
+│   ├── experience/
+│   │   ├── Timeline.jsx
+│   │   └── ExperienceCard.jsx
+│   ├── services/
+│   │   └── ServiceCard.jsx
+│   └── contact/
+│       └── ContactForm.jsx
+├── styles/
+│   ├── GlobalStyles.js
+│   ├── Theme.js
+│   └── animations.js
+├── pages/
+│   ├── Home.jsx
+│   ├── About.jsx
+│   ├── Experience.jsx
+│   ├── Services.jsx
+│   └── Contact.jsx
+└── App.jsx 
